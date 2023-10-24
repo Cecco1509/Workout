@@ -1,1 +1,21 @@
-<h1>Home#index</h1>
+
+<h1>Workouts</h1>
+<br><br>
+    <% if user_signed_in? %>
+        <table class="table table-responsive table-hover">
+            <tbody>
+                <% @days.each do |day| %>
+                    <tr>
+                    <td> <%= day.name %> </td>
+                    <td style="text-align:right">START | SHOW | EDIT</td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <%= link_to "ADD", new_day_path , class: "btn btn-primary" %>
+    <% else %>
+        <p> Esegui il log-in per allenarti </p>
+    <% end %>
+<br>
+
+

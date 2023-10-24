@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :day_to_exercises
+  resources :days
+  resources :exercises
   devise_for :users
 
   root 'home#index'

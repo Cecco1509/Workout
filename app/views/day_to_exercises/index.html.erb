@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Day to exercises</h1>
+
+<div id="day_to_exercises">
+  <% @day_to_exercises.each do |day_to_exercise| %>
+    <%= render day_to_exercise %>
+    <p>
+      <%= link_to "Show this day to exercise", day_to_exercise %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New day to exercise", new_day_to_exercise_path %>
