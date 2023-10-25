@@ -231,7 +231,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9, >= 4.9.3)
   importmap-rails
-  jbuilder
+  jbuilder (~> 2.7)
   puma (~> 5.0)
   rails (~> 7.0.8)
   selenium-webdriver

@@ -13,6 +13,7 @@ class DayToExercisesController < ApplicationController
   # GET /day_to_exercises/new
   def new
     @day_to_exercise = DayToExercise.new
+    @exercises = Array.new
   end
 
   # GET /day_to_exercises/1/edit

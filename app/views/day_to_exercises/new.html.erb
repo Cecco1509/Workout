@@ -1,9 +1,20 @@
-<h1>New day to exercise</h1>
+<h1>Nuovo Workout</h1>
 
+<%= render "days/form", day: Day.new %>
+
+<br>
+<h2>Esercizio 1</h2>
+
+<%= render "exercises/form", exercise: Exercise.new %>
+<%= render "form", day_to_exercise: @day_to_exercise %>
+
+<br><h2>Esercizio 2</h2>
+
+<%= render "exercises/form", exercise: Exercise.new %>
 <%= render "form", day_to_exercise: @day_to_exercise %>
 
 <br>
 
 <div>
-  <%= link_to "Back to day to exercises", day_to_exercises_path %>
+  <%= link_to "Back", root_path %>
 </div>

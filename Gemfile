@@ -10,7 +10,7 @@ gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "jbuilder"
+gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.9', '>= 4.9.3'
 
 # Use Redis adapter to run Action Cable in production
