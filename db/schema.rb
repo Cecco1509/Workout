@@ -10,20 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_203408) do
-  create_table "day_to_exercises", force: :cascade do |t|
-    t.integer "day_id", null: false
-    t.integer "exercise_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_day_to_exercises_on_day_id"
-    t.index ["exercise_id"], name: "index_day_to_exercises_on_exercise_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_191849) do
   create_table "days", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "days_exercises", id: false, force: :cascade do |t|
+    t.integer "day_id", null: false
+    t.integer "exercise_id", null: false
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -47,6 +43,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_203408) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "day_to_exercises", "days"
-  add_foreign_key "day_to_exercises", "exercises"
 end
