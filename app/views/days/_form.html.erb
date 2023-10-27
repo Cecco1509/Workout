@@ -16,36 +16,22 @@
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :exercises, style: "display: block" %>
-    <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %>
-  </div>
-
-  <div class="container border rounded p-2">
-  <h2>Nuovo esercizio</h2>
-    <div>
-      <%= form.label :name, style: "display: block" %>
-      <%= form.text_field :name %>
-    </div>
-
-    <div>
-      <%= form.label :sets, style: "display: block" %>
-      <%= form.number_field :sets %>
-    </div>
-
-    <div>
-      <%= form.label :reps, style: "display: block" %>
-      <%= form.text_field :reps %>
-    </div>
-
-    <div>
-      <%= form.label :rest, style: "display: block" %>
-      <%= form.number_field :rest %>
-    </div>
-  </div>
-
   <br>
   <div>
-    <%= form.submit %>
+    <% if !@exercises.empty? %>
+      <%= form.label :exercises, style: "display: block" %>
+        <% @exercises.each do |exercise| %>
+          <%= render exercise %> 
+        <%end%>
+        <%= form.label :exercise.name %>
+        <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %>
+      <br>
+    <%end%>
+  </div>
+
+  <%=link_to "Crea un nuovo esercizio", new_exercise_path, class: "btn btn-secondary"%>
+  <br><br>
+  <div>
+    <%= form.submit class: "btn btn-primary"%>
   </div>
 <% end %>

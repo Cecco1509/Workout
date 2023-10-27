@@ -4,6 +4,7 @@ class DaysController < ApplicationController
   # GET /days or /days.json
   def index
     @days = Day.all
+    @exercises = Exercise.all
   end
 
   # GET /days/1 or /days/1.json
@@ -13,10 +14,12 @@ class DaysController < ApplicationController
   # GET /days/new
   def new
     @day = Day.new
+    @exercises = Exercise.all
   end
 
   # GET /days/1/edit
   def edit
+    @exercises = Exercise.all
   end
 
   # POST /days or /days.json
@@ -65,6 +68,6 @@ class DaysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def day_params
-      params.require(:day).permit(:name)
+      params.require(:day).permit(:name, exercises_attributes: [:name, :sets, :reps, :rest])
     end
 end

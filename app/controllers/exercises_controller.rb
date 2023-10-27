@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  include ActionView::RecordIdentifier
   before_action :set_exercise, only: %i[ show edit update destroy ]
   before_action :user_signed_in?, execept: %i[ show ]
 
