@@ -5,13 +5,15 @@
         <table class="table table-responsive table-hover">
             <tbody>
                 <% @days.each do |day| %>
-                    <tr>
-                    <td> <%= day.name %> </td>
-                    <td style="text-align:right">
-                    START | 
-                     <%= link_to "SHOW", day %> | 
-                     <%= link_to "EDIT", edit_day_path(day)%></td>
-                    </tr>
+                    <% if day.user == current_user %>
+                        <tr>
+                            <td> <%= day.name %> </td>
+                            <td style="text-align:right">
+                            START | 
+                            <%= link_to "SHOW", day %> | 
+                            <%= link_to "EDIT", edit_day_path(day)%></td>
+                        </tr>
+                    <%end %>
                 <% end %>
             </tbody>
         </table>

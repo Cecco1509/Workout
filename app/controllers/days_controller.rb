@@ -1,5 +1,7 @@
 class DaysController < ApplicationController
   before_action :set_day, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! , exept: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /days or /days.json
   def index
@@ -13,7 +15,7 @@ class DaysController < ApplicationController
 
   # GET /days/new
   def new
-    @day = Day.new
+    @day = current_user.days.build
     @exercises = Exercise.all
   end
 
@@ -24,7 +26,7 @@ class DaysController < ApplicationController
 
   # POST /days or /days.json
   def create
-    @day = Day.new(day_params)
+    @day = current_user.days.build(day_params)
 
     respond_to do |format|
       if @day.save
@@ -66,8 +68,13 @@ class DaysController < ApplicationController
       @day = Day.find(params[:id])
     end
 
+    def correct_user
+      @day = current_user.days.find(id: params[:id])
+      redirect_to root_path, notice: "Not authorized to access this page." if @day.nil?
+    end
+
     # Only allow a list of trusted parameters through.
     def day_params
-      params.require(:day).permit(:name, :exercise_ids => [])
+      params.require(:day).permit(:name, :user_id, :exercise_ids => [])
     end
 end
