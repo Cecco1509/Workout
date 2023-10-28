@@ -62,15 +62,15 @@ class DaysController < ApplicationController
     end
   end
 
+  def correct_user
+    @day = current_user.days.find_by(id: params[:id])
+    redirect_to root_path, notice: "Not authorized to access this page." if @day.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_day
       @day = Day.find(params[:id])
-    end
-
-    def correct_user
-      @day = current_user.days.find(id: params[:id])
-      redirect_to root_path, notice: "Not authorized to access this page." if @day.nil?
     end
 
     # Only allow a list of trusted parameters through.
