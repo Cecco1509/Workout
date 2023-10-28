@@ -1,12 +1,14 @@
 <div id="<%= dom_id day %>">
   <p>
-    <strong>Name:</strong>
-    <%= day.name %>
+    <h2>
+      <%= day.name %>
+    </h2>
+    
   </p>
 
-  <% day.exercises.each do |exercise|%>
-    <h1>Ciao</h1>
+  <% @day.exercises.each do |exercise|%>
     <%= render exercise%>
+    <br>
   <%end%>
 
 </div>

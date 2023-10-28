@@ -68,6 +68,6 @@ class DaysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def day_params
-      params.require(:day).permit(:name, exercises_attributes: [:name, :sets, :reps, :rest])
+      params.require(:day).permit(:name, :exercise_ids => [])
     end
 end

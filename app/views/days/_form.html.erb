@@ -20,15 +20,14 @@
   <div>
     <% if !@exercises.empty? %>
       <%= form.label :exercises, style: "display: block" %>
-        <% @exercises.each do |exercise| %>
+        <!--<% @exercises.each do |exercise| %>
           <%= render exercise %> 
-        <%end%>
-        <%= form.label :exercise.name %>
+        <%end%>-->
         <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name %>
-      <br>
+      
     <%end%>
   </div>
-
+<br>
   <%=link_to "Crea un nuovo esercizio", new_exercise_path, class: "btn btn-secondary"%>
   <br><br>
   <div>

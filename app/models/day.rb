@@ -4,11 +4,4 @@ class Day < ApplicationRecord
 
     validates :name, presence: :true
 
-    def exercises_attributes=(exercises_attributes)
-        exercises_attributes.values.each do |exercise|
-            if !exercise[:name].empty?
-                self.exercises << Exercise.find_or_create_by(id: exercise[:id])
-            end
-        end
-    end
 end
