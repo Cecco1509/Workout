@@ -23,17 +23,22 @@
   <div>
     <% if !@exercises.empty? %>
       <%= form.label :exercises, style: "display: none" %>
-      <h2>Aggiungi esercizi</h2>
+      <h2 style="margin-left: 0.5rem;">Aggiungi esercizi</h2>
       <br>
       <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :name do |exercise| %>
         <%= exercise.label class: "custom-checkbox" do %>
-        <%= exercise.check_box %>
-          <span class="checkmark"><%= exercise.text %></span>
+          <%= exercise.check_box %>
+          <div class="checkmark rounded m-2">
+            <strong><%= exercise.text %></strong><br>
+            <% e = @exercises.find_by_id(exercise.value) %>
+            <span> Sets: <%= e.sets %></span><br>
+            <span> Reps: <%= e.reps %></span>
+          </div>
         <% end %>
       <% end %>
     <%end%>
   </div>
-  <br><br><br>
+  <br>
   <%=link_to "Crea un nuovo esercizio", new_exercise_path, class: "btn btn-secondary"%>
   <br><br><br>
   <div>

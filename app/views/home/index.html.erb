@@ -7,11 +7,10 @@
                 <% @days.each do |day| %>
                     <% if day.user == current_user %>
                         <tr>
-                            <td> <%= day.name %> </td>
+                            <td> <h4><%= day.name %></h4> </td>
                             <td style="text-align:right">
-                            START | 
-                            <%= link_to "SHOW", day %> | 
-                            <%= link_to "EDIT", edit_day_path(day)%></td>
+                            <%= link_to "START", day, class: "btn btn-success"%>
+                            <%= link_to "EDIT", edit_day_path(day), class: "btn btn-secondary"%></td>
                         </tr>
                     <%end %>
                 <% end %>

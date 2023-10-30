@@ -27,13 +27,13 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.save
-        format.html { redirect_to exercise_url(@exercise), notice: "Exercise was successfully created." }
-        format.json { render :show, status: :created, location: @exercise }
+        redirect_to new_day_path and return
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @exercise.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /exercises/1 or /exercises/1.json

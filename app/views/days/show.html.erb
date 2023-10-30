@@ -2,9 +2,9 @@
 
 <%= render @day %>
 
-<div>
-  <%= link_to "Edit this day", edit_day_path(@day) %> |
-  <%= link_to "Back", root_path %>
+<div class="d-flex">
+  <%= link_to "Edit", edit_day_path(@day), class: "btn btn-secondary my-mr" %>
+  <%= link_to "Back", root_path, class: "btn btn-secondary my-mr" %>
 
-  <%= button_to "Destroy this day", @day, method: :delete %>
+  <%= button_to "Destroy", @day, method: :delete, class: "btn btn-danger" %>
 </div>
